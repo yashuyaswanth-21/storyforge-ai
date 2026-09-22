@@ -3,37 +3,90 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>StoryForge AI</title>
 
-    <link rel="stylesheet" href="/static/style.css">
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
 </head>
 
 <body>
 
-    <main class="container">
+<div class="container">
 
+    <header>
         <h1>🎬 StoryForge AI</h1>
 
         <p>
-            Turn your story into a cinematic video.
+            Turn your story into a cinematic movie.
         </p>
+    </header>
+
+
+    <section class="story-box">
+
+        <h2>✨ Create Your Story</h2>
 
         <textarea
             id="story"
-            placeholder="Enter your story..."
+            placeholder="Enter your story here..."
         ></textarea>
 
-        <button onclick="createStory()">
-            Create Story
+        <button onclick="analyzeStory()">
+            Analyze Story
         </button>
 
-        <div id="result"></div>
+    </section>
 
-    </main>
 
-    <script src="/static/script.js"></script>
+    <!-- Error message -->
+    <div
+        id="error"
+        style="
+            display:none;
+            margin-top:20px;
+            padding:15px;
+            background:#5c1f1f;
+            color:white;
+            border-radius:10px;
+        "
+    ></div>
+
+
+    <!-- Results -->
+    <section
+        id="result"
+        class="result"
+        style="display:none;"
+    >
+
+        <h2>🎬 Story Analysis</h2>
+
+        <h3 id="title"></h3>
+
+
+        <h2>👤 Characters</h2>
+
+        <div
+            id="characters"
+            class="grid"
+        ></div>
+
+
+        <h2>🎞️ Scenes</h2>
+
+        <div id="scenes"></div>
+
+    </section>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 
